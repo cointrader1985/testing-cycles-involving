@@ -40,4 +40,21 @@ signed = wallet.sign_transaction(
 
 signature = signed.raw_transaction.hex()
 
-digest = hash
+digest = hashlib.sha1(
+    signature.encode()
+).hexdigest()
+
+print(datetime.utcnow())
+
+for item in labels:
+    print(item)
+
+print(wallet.address)
+
+print(provider.is_connected())
+
+print(transaction["nonce"])
+
+print(digest[:16])
+
+print("Interaction signed")
